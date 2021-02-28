@@ -14,21 +14,27 @@ public class ContadorController {
 	public String pessoas(HttpServletRequest req, Model model) {
 		Integer contador = 0;
 
+		// inicializa a sessão do usuário
 		HttpSession session = req.getSession(true);
 		if (session != null) {
 
-			if (!session.isNew()) {
-				contador = (Integer) session.getAttribute("contador");
-				if (contador == null) {
-					contador = 0;
-				}
-			}
-			contador = contador + 1;
-			session.setAttribute("contador", contador);
-		}
+			contador = (Integer) session.getAttribute("contador");
 
-		
-		model.addAttribute("contador", contador);
+			//se o contador não foi iniciado ainda, inicia ele com 0
+			if (contador == null) {
+				contador = 0;
+			}
+
+			contador = contador + 1;
+
+			//salva variável de sessão
+			session.setAttribute("contador", contador);
+
+			model.addAttribute("contador", contador);
+		} else {
+			//em caso de erro, emite mensagem de erro
+			model.addAttribute("contador", "<Contador não pôde ser inicializado>");
+		}
 
 		return "contador/index";
 	}
