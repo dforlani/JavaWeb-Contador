@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ContadorController {
 
-	@GetMapping("/hello")
+	@GetMapping("/contador")
 	public String pessoas(HttpServletRequest req, Model model) {
 		Integer contador = 0;
 
@@ -33,9 +33,9 @@ public class ContadorController {
 			model.addAttribute("contador", contador);
 		} else {
 			//em caso de erro, emite mensagem de erro
-			model.addAttribute("contador", "<Contador não pôde ser inicializado>");
+			model.addAttribute("erro", "<Contador não pôde ser inicializado>");
 		}
-
+		
 		return "contador/index";
 	}
 }

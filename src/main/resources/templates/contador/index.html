@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Sistema de Gestão de Pessoas</title>
+    <title>Contador de Visitas</title>
 
     <link
       rel="stylesheet"
@@ -14,8 +14,9 @@
   <body>
     <div class="container my-2">
       Você visitou esta página
-      <h1 th:text="${contador}"></h1>
+      <h1 th:text="${contador}"></h1>     
       vezes
+      <h1 th:text="${erro}"></h1>
     </div>
   </body>
 </html>
